@@ -26,7 +26,7 @@ func readRepo() (string, string) {
 	return parts[0], parts[1]
 }
 func fetchFilesChanged(owner, repo string, prNumber int) []*github.CommitFile {
-	authToken := os.Getenv("GITHUB_AUTH_TOKEN")
+	authToken := os.Getenv("GITHUB_TOKEN")
 	client := github.NewClient(nil).WithAuthToken(authToken)
 	ctx := context.Background()
 	files, _, err := client.PullRequests.ListFiles(ctx, owner, repo, prNumber, nil)
